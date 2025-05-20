@@ -1,5 +1,8 @@
 package com.jonhvtrAlura.principal;
 
+import com.google.gson.Gson;
+import com.jonhvtrAlura.model.Titulo;
+
 import java.io.IOException;
 import java.net.URI;
 import java.net.http.HttpClient;
@@ -9,6 +12,7 @@ import java.util.Scanner;
 
 public class PrincipalBusca {
     public static void main(String[] args) throws IOException, InterruptedException {
+        Gson gson = new Gson();
         Scanner leitura = new Scanner(System.in);
         System.out.println("Digite um filme para busca:");
         var busca = leitura.nextLine();
@@ -22,7 +26,10 @@ public class PrincipalBusca {
 
         HttpResponse<String> response = client
                 .send(request, HttpResponse.BodyHandlers.ofString());
+        String json = response.body();
+        System.out.println(json);
 
-        System.out.println(response.body());
+        Titulo meuTitulo = gson.fromJson(json, Titulo.class);
+        System.out.println(meuTitulo.toString());
     }
 }
