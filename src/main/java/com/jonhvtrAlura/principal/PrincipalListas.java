@@ -1,8 +1,8 @@
 package com.jonhvtrAlura.principal;
 
-import com.jonhvtrAlura.model.Filme;
-import com.jonhvtrAlura.model.Serie;
-import com.jonhvtrAlura.model.Titulo;
+import com.jonhvtrAlura.domain.Filme;
+import com.jonhvtrAlura.domain.Serie;
+import com.jonhvtrAlura.domain.Titulo;
 
 import java.util.ArrayList;
 import java.util.Collections;

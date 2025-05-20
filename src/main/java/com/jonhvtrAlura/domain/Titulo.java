@@ -1,6 +1,7 @@
-package com.jonhvtrAlura.model;
+package com.jonhvtrAlura.domain;
 
 import com.google.gson.annotations.SerializedName;
+import com.jonhvtrAlura.domain.dto.TituloOmdb;
 
 public class Titulo implements Comparable<Titulo> {
     @SerializedName("Title")
@@ -18,6 +19,12 @@ public class Titulo implements Comparable<Titulo> {
     public Titulo(String nome, int anoDeLancamento) {
         this.nome = nome;
         this.anoDeLancamento = anoDeLancamento;
+    }
+
+    public Titulo(TituloOmdb meutituloOmdb) {
+        this.nome = meutituloOmdb.title();
+        this.anoDeLancamento = Integer.parseInt(meutituloOmdb.year());
+        this.duracaoEmMinutos = Integer.parseInt(meutituloOmdb.runtime().substring(0, 2));
     }
 
     public void exibeFichaTecnica() {
@@ -87,7 +94,8 @@ public class Titulo implements Comparable<Titulo> {
     }
 
     @Override
-    public String toString(){
-        return "Nome: " + nome + "; Ano de Lançamento: " + anoDeLancamento;
+    public String toString() {
+        return "Nome: " + nome + "; Ano de Lançamento: " + anoDeLancamento +
+                " Duração em minutos: " + duracaoEmMinutos;
     }
 }

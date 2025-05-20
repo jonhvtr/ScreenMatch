@@ -1,7 +1,10 @@
 package com.jonhvtrAlura.principal;
 
+import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
-import com.jonhvtrAlura.model.Titulo;
+import com.google.gson.GsonBuilder;
+import com.jonhvtrAlura.domain.Titulo;
+import com.jonhvtrAlura.domain.dto.TituloOmdb;
 
 import java.io.IOException;
 import java.net.URI;
@@ -12,7 +15,7 @@ import java.util.Scanner;
 
 public class PrincipalBusca {
     public static void main(String[] args) throws IOException, InterruptedException {
-        Gson gson = new Gson();
+        Gson gson = new GsonBuilder().setFieldNamingPolicy(FieldNamingPolicy.UPPER_CAMEL_CASE).create();
         Scanner leitura = new Scanner(System.in);
         System.out.println("Digite um filme para busca:");
         var busca = leitura.nextLine();
@@ -29,7 +32,10 @@ public class PrincipalBusca {
         String json = response.body();
         System.out.println(json);
 
-        Titulo meuTitulo = gson.fromJson(json, Titulo.class);
-        System.out.println(meuTitulo.toString());
+        TituloOmdb meuTituloOmdb = gson.fromJson(json, TituloOmdb.class);
+        System.out.println(meuTituloOmdb);
+        System.out.println("------------------------");
+        Titulo meuTitulo = new Titulo(meuTituloOmdb);
+        System.out.println(meuTitulo);
     }
 }
