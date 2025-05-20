@@ -1,4 +1,4 @@
-package com.jonhvtrAlura.model;
+package com.jonhvtrAlura.domain;
 
 public class Serie extends Titulo {
     private int temporadas;

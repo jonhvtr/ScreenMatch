@@ -1,6 +1,6 @@
 package com.jonhvtrAlura.service;
 
-import com.jonhvtrAlura.model.Titulo;
+import com.jonhvtrAlura.domain.Titulo;
 
 public class CalculadoraTempo {
     private int tempoTotal;

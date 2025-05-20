@@ -1,4 +1,4 @@
-package com.jonhvtrAlura.model;
+package com.jonhvtrAlura.domain;
 
 import com.jonhvtrAlura.service.Classificavel;
 
