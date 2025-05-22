@@ -2,11 +2,10 @@ package com.jonhvtrAlura.domain;
 
 import com.google.gson.annotations.SerializedName;
 import com.jonhvtrAlura.domain.dto.TituloOmdb;
+import com.jonhvtrAlura.exception.ErroConversaoAnoException;
 
 public class Titulo implements Comparable<Titulo> {
-    @SerializedName("Title")
     private String nome;
-    @SerializedName("Year")
     private int anoDeLancamento;
     private boolean incluidoNoPlano;
     private double somaDasAvaliacoes;
@@ -23,6 +22,9 @@ public class Titulo implements Comparable<Titulo> {
 
     public Titulo(TituloOmdb meutituloOmdb) {
         this.nome = meutituloOmdb.title();
+        if (meutituloOmdb.year().length() > 4) {
+            throw new ErroConversaoAnoException("Não consegui converter o ano");
+        }
         this.anoDeLancamento = Integer.parseInt(meutituloOmdb.year());
         this.duracaoEmMinutos = Integer.parseInt(meutituloOmdb.runtime().substring(0, 2));
     }
